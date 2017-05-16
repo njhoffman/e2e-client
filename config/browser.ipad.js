@@ -1,0 +1,3 @@
+module.exports = {
+  browserName: 'iPad'
+};
