@@ -79,8 +79,10 @@ $(document).ready(function() {
     $('#omCarousel .item').remove();
     $('#omCarousel li').remove();
 
+    var targetSite = $('select[name="target-site"]').find(':selected').val();
+    var postData = { targetSite: targetSite };
 
-    $.post('/tests/' + name, function(data) { });
+    $.post('/tests/' + name, postData, function(data) { });
   });
 
 });

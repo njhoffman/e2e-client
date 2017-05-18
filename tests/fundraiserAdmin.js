@@ -21,7 +21,7 @@ client
   .init()
   .then(() => initScreenshotDirectory())
   .setViewportSize(config.resolution)
-  .url('http://cgw3bstrat3gy:cgw3bstrat3gy@sandbox.onemission.fund')
+  .url(config.targetUrl)
   .waitForVisible('a[title="Login"]')
   .click('a[title="Login"]')
   .waitForVisible('#signin-email', 7000)

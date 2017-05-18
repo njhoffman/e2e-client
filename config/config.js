@@ -28,8 +28,24 @@ const parseResolution = (input = defaultResolution) => {
   return defaultResolution
 };
 
+const getTargetUrl = (target = 'sandbox') => {
+  console.log("getting target", target);
+  switch (target) {
+    case "sandbox":
+      return 'http://cgw3bstrat3gy:cgw3bstrat3gy@sandbox.onemission.fund';
+      break;
+    case "dev":
+      return 'http://cgw3bstrat3gy:cgw3bstrat3gy@dev.onemission.fund';
+      break;
+    case "live":
+      return 'https://onemission.fund';
+      break;
+  }
+};
+
 const config = {
   env : process.env.NODE_ENV || 'development',
+  targetUrl: getTargetUrl(argv.target)
   // url, credentials, is mobile
 };
 

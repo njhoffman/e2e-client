@@ -32,7 +32,7 @@ const exec = () => {
     .init()
     .then(() => initScreenshotDirectory())
     .setViewportSize(config.resolution)
-    .url('http://cgw3bstrat3gy:cgw3bstrat3gy@sandbox.onemission.fund')
+    .url(config.targetUrl)
     .waitForVisible('a[title="Start Fund"]', 9000)
     .emit('log', 'Starting Fundraiser Account Creation')
     .then(() => saveScreenshot('Home'))

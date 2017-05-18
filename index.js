@@ -6,6 +6,7 @@ const express = require('express');
 const WebSocket = require('ws');
 const http = require('http');
 const url = require('url');
+const bodyParser = require('body-parser');
 const Convert = require('ansi-to-html');
 const convert = new Convert({
   newline: true,
@@ -17,6 +18,9 @@ const convert = new Convert({
 });
 
 const app = express();
+app.use(bodyParser.json({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
+
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 const serverPort = 3000;
@@ -60,9 +64,14 @@ app.post('/listImages', (req, res) => {
 });
 
 app.post('/tests/fundRegister', (req, res) => {
-  const testProcess = spawn('node',  ['tests/fundraiserCreateAccount.js']);
+  const targetSite = req.body.targetSite;
+  const nodeArgs = ['tests/fundraiserCreateAccount.js'];
+  if (req.body.targetSite) {
+    nodeArgs.push('--target');
+    nodeArgs.push(req.body.targetSite);
+  }
+  const testProcess = spawn('node', nodeArgs);
   let errorFlag = false;
-
 
   testProcess.stdout.on('data', (chunk) => {
     // console.log(chunk);
@@ -92,8 +101,15 @@ app.post('/tests/fundRegister', (req, res) => {
 });
 
 app.post('/tests/fundAdmin', (req, res) => {
-  const testProcess = spawn('node',  ['tests/fundraiserAdmin.js']);
+  const targetSite = req.body.targetSite;
+  const nodeArgs = ['tests/fundraiserAdmin.js'];
+  if (req.body.targetSite) {
+    nodeArgs.push('--target');
+    nodeArgs.push(req.body.targetSite);
+  }
+  const testProcess = spawn('node', nodeArgs);
   let errorFlag = false;
+
 
   testProcess.stdout.on('data', (chunk) => {
     // console.log(chunk);
@@ -108,7 +124,7 @@ app.post('/tests/fundAdmin', (req, res) => {
       parsedPath = parsedPath.split('\n')[0];
       ws.send('screenshot: ' + parsedPath);
 		}
-    ws.send(htmlText);
+    ws && ws.send(htmlText);
   });
 
   testProcess.stderr.on('data', (err) => {
