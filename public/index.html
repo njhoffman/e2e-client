@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="om.css" />
+  <script type="text/javascript" src="om.js"></script>
+</head>
+<body>
+  <div class="row one">
+    <div class="col-md-4 center test-command">
+      <h3>One Mission E2E Tests</h3>
+      <i>Select the test to run...</i><br />
+      <select name="test-name">
+        <option value="fundRegister">Fundraiser Registration</option>
+        <option value="fundAdmin">Fundraiser Admin Walkthrough</option>
+      </select>
+      <button class="btn-primary start">Start</button>
+      <div class="screenshot-status"></div>
+      <div class="test-status"></div>
+    </div>
+    <div class="col-md-8 center">
+      <div class="test-wrapper">
+        <div class="test-bar">Test Runner Output</div>
+        <div class="test-output">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row two">
+    <div class="col-12">
+      <div id="omCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#omCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#omCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

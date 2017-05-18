@@ -1,0 +1,110 @@
+.center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.row.one {
+  height: 350px;
+}
+
+.row-two {
+}
+
+.test-command {
+  margin-top:
+}
+
+.test-command h3 {
+  margin-bottom: 50px;
+}
+
+.screenshot-status {
+  margin-top: 25px;
+  color: #5cb85c;
+  font-weight: bold;
+}
+
+#omCarousel {
+  display: none;
+  border: ridge 3px gray;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.carousel-caption {
+  left: 30%;
+  right: 30%;
+}
+
+.carousel-indicators {
+  margin-left: -20%;
+}
+
+.carousel-caption,
+.carousel-indicators {
+  background: black;
+  width: 40%;
+}
+
+.test-wrapper {
+  border: solid 1px gray;
+  margin: 5px 10px;
+}
+
+.test-bar {
+  color: white;
+  background: #0275d8;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+.test-bar.running {
+  background: #f0ad4e;
+}
+
+.test-bar.completed {
+  background: #5cb85c;
+}
+
+.test-bar.error {
+	background: #d9534f ;
+}
+
+.test-output,
+.test-command {
+  height: 300px;
+}
+
+.test-output {
+  font-size: 10px;
+  overflow-y: scroll;
+  text-align: left;
+  color: white;
+  background: black;
+  display: block;
+  width: 100%;
+  padding: 5px;
+}
+
+.test-status {
+	max-height: 125px;
+	overflow: hidden;
+	margin-top: 10px;
+	margin-left: 25px;
+	border-radius: 5px;
+	padding: 10px;
+}
+.test-status.completed {
+  color: #5cb85c;
+}
+
+.test-status.error b {
+	text-align: center;
+	margin-bottom: 5px;
+}
+.test-status.error {
+	color: white;
+	text-align: left;
+	background: #d9534f ;
+}

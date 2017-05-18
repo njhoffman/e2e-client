@@ -16,10 +16,10 @@ const displayError = (description) => (err) => {
       err.message.split('\n').forEach(msg => {
         console.error(`${err.name}: ${msg}`);
       });
-      console.error(err.stack);
+      console.log(err.stack);
       break;
   }
-  console.error(`\n${chalk.bold.bgRed('*** ERROR ***')}\n\n`);
+  console.log(`\n${chalk.bold.bgRed('*** ERROR ***')}\n\n`);
 };
 
 process.on('uncaughtException', displayError('An uncaught exception occured.'));
@@ -31,7 +31,7 @@ const pad = (n, width) => {
 };
 
 const saveScreenshot = (testName) => {
-  let ssPath = path.resolve('reports/screenshots/',  moduleName);
+  let ssPath = path.resolve('screenshots/',  moduleName);
   const dt = new Date();
   ssPath += '/' +  pad(dt.getHours(), 2) + '.' + pad(dt.getMinutes(), 2)  + '.' +
     pad(dt.getSeconds(), 2) + '.' + pad(dt.getMilliseconds(), 3) + ' - ' + testName + '.png';
@@ -40,7 +40,7 @@ const saveScreenshot = (testName) => {
 };
 
 const initScreenshotDirectory = () => {
-  let dir = path.resolve('reports/screenshots/', moduleName + '/');
+  let dir = path.resolve('screenshots/', moduleName + '/');
   if (!fs.existsSync(dir)) {
     console.log(`\nMaking directory: ${dir}\n`);
     fs.mkdirSync(dir);

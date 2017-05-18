@@ -61,7 +61,7 @@ app.post('/listImages', (req, res) => {
 
 app.post('/tests/fundRegister', (req, res) => {
   const testProcess = spawn('node',  ['tests/fundraiserCreateAccount.js']);
-  let errorFlag = false;
+  const errorFlag = false;
 
 
   testProcess.stdout.on('data', (chunk) => {
@@ -93,7 +93,7 @@ app.post('/tests/fundRegister', (req, res) => {
 
 app.post('/tests/fundAdmin', (req, res) => {
   const testProcess = spawn('node',  ['tests/fundraiserAdmin.js']);
-  let errorFlag = false;
+  const errorFlag = false;
 
   testProcess.stdout.on('data', (chunk) => {
     // console.log(chunk);
@@ -112,12 +112,9 @@ app.post('/tests/fundAdmin', (req, res) => {
   });
 
   testProcess.stderr.on('data', (err) => {
-    const msg = err.toString('utf8');
     console.log('stderr: ',  err.toString('utf8'));
-    if (msg.indexOf('WARNING:') === -1) {
-      errorFlag = true;
-      ws.send('error: ' + convert.toHtml(err.toString('utf8')));
-    }
+    errorFlag = true;
+    ws.send('error: ' + convert.toHtml(err.toString('utf8')));
   });
 
   testProcess.on('exit', (code) => {

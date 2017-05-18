@@ -31,6 +31,9 @@ client
   .click('button.sign-in')
   .waitForVisible('a[title="Admin"]', 5000)
   .then(() => saveScreenshot('Home After Login'))
+  .click('a[title="Admin"]')
+  .waitForVisible('#wpadminbar', 5000)
+  .then(() => saveScreenshot('Admin Area'))
   .then(() => {
     console.log('Done');
     return;

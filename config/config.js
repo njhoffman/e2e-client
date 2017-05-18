@@ -2,8 +2,6 @@ const path = require('path');
 const fs = require('fs');
 const argv = require('yargs').argv;
 
-
-
 const loadConfig = (group, name) => {
   const defaultName = path.resolve(`${__dirname}/${group}.default`);
   let pathName = name ? path.resolve(`${__dirname}/${group}.${name}`) : defaultName;
