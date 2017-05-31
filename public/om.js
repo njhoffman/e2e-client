@@ -27,7 +27,7 @@ $(document).ready(function() {
   // listImages();
 
   var host = window.document.location.host.replace(/:.*/, '');
-  var wsHost = 'ws://' + host + ':3000';
+  var wsHost = 'ws://' + host + ':3001';
 
   console.info('Connecting to websocket: ' + wsHost);
 	var ws = new WebSocket(wsHost);

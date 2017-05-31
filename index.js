@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
-const serverPort = 3000;
+const serverPort = 3001;
 
 const waitingMessage = chalk.green.bold(`\nOne Mission Tests Runner\n`) +
   `\nWebsockets Server listening on port: ${chalk.cyan(serverPort)} \n\n`;
