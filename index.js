@@ -16,6 +16,7 @@ const convert = new Convert({
     0: '#aaa'
   }
 });
+const config = require('./config');
 
 const app = express();
 app.use(bodyParser.json({ extended: true }));
@@ -67,8 +68,10 @@ app.post('/tests/fundRegister', (req, res) => {
   const targetSite = req.body.targetSite;
   const nodeArgs = ['tests/fundraiserCreateAccount.js'];
   if (req.body.targetSite) {
-    nodeArgs.push('--target');
+    nodeArgs.push('--site');
     nodeArgs.push(req.body.targetSite);
+    nodeArgs.push('--target');
+    nodeArgs.push(config.target);
   }
   const testProcess = spawn('node', nodeArgs);
   let errorFlag = false;
@@ -104,8 +107,10 @@ app.post('/tests/fundAdmin', (req, res) => {
   const targetSite = req.body.targetSite;
   const nodeArgs = ['tests/fundraiserAdmin.js'];
   if (req.body.targetSite) {
-    nodeArgs.push('--target');
+    nodeArgs.push('--site');
     nodeArgs.push(req.body.targetSite);
+    nodeArgs.push('--target');
+    nodeArgs.push(config.target);
   }
   const testProcess = spawn('node', nodeArgs);
   let errorFlag = false;

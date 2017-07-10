@@ -25,6 +25,11 @@ const password = 'cgw3bstrat3gy';
 const fundName = faker.random.words() + ' Test Fundraiser';
 
 const saveButton = 'button[name="save_continue"]';
+const now = new Date();
+const start = now.getMonth() === 11 ? new Date(now.getFullYear() + 1, 1, 1)
+  : new Date(now.getFullYear(), now.getMonth() + 2, 1);
+const end = now.getMonth() === 11 ? new Date(now.getFullYear() + 3, 2, 15)
+  : new Date(now.getFullYear(), now.getMonth() + 3, 15);
 
 console.log('running ...');
 const exec = () => {
@@ -32,12 +37,12 @@ const exec = () => {
     .init()
     .then(() => initScreenshotDirectory())
     .setViewportSize(config.resolution)
-    .url(config.targetUrl)
+    .url(config.siteUrl)
     .waitForVisible('a[title="Start Fund"]', 9000)
     .emit('log', 'Starting Fundraiser Account Creation')
     .then(() => saveScreenshot('Home'))
     .click('a[title="Start Fund"]')
-    .waitForVisible('#signup-form', 3000)
+    .waitForVisible('#signup-form', 7000)
     .setValue('#signup-first-name', faker.name.firstName())
     .setValue('#signup-last-name', faker.name.lastName())
     .setValue('#signup-email', emailName)
@@ -63,8 +68,8 @@ const exec = () => {
   // step 2
     .waitForVisible('input[name="fundraiser_goal_amount"]', 5000)
     .setValue('input[name="fundraiser_goal_amount"', Math.round(Math.random() * 100) * 1000)
-    .setValue('input[name="fundraiser_start_date"]', '06/02/2017')
-    .setValue('input[name="fundraiser_end_date"]', '07/02/2017')
+    .setValue('input[name="fundraiser_start_date"]', start.getMonth() + '/' + start.getDay() + '/' + start.getFullYear())
+    .setValue('input[name="fundraiser_end_date"]', end.getMonth() + '/' + end.getDay() + '/' + end.getFullYear())
     .then(() => saveScreenshot('Step 2'))
     .click(saveButton)
   // step 3
@@ -111,23 +116,23 @@ const exec = () => {
     .then(() => saveScreenshot('Step 8'))
     .click(saveButton)
   // launch step
-    .waitForVisible('button.launch-btn', 5000)
-    .click('a.launch-btn')
-    .pause(500)
-    .switchTab()
-    .then(() => saveScreenshot('Preview'))
-    .switchTab()
-    .click('button.launch-btn')
-    .waitForVisible('li.pending', 5000)
-    .then(() => saveScreenshot('Launch'))
-    .click('button.launch-btn')
-    .then(() => saveScreenshot('Home'))
-    .waitForVisible('body.home-fhpage', 5000)
-    .then(() => {
-      console.log(chalk.white.bgGreen('\n\nFinished "Fundraiser Create Account" Test\n\n'));
-      return;
-    })
-    .end()
+    // .waitForVisible('button.launch-btn', 5000)
+    // .click('a.launch-btn')
+    // .pause(500)
+    // .switchTab()
+    // .then(() => saveScreenshot('Preview'))
+    // .switchTab()
+    // .click('button.launch-btn')
+    // .waitForVisible('li.pending', 5000)
+    // .then(() => saveScreenshot('Launch'))
+    // .click('button.launch-btn')
+    // .then(() => saveScreenshot('Home'))
+    // .waitForVisible('body.home-fhpage', 5000)
+    // .then(() => {
+    //   console.log(chalk.white.bgGreen('\n\nFinished "Fundraiser Create Account" Test\n\n'));
+    //   return;
+    // })
+    // .end()
 };
 
 exec();

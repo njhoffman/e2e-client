@@ -8,6 +8,8 @@ const loadConfig = (group, name) => {
   if (!fs.existsSync(pathName + '.js')) {
     console.log(`${pathName} does not exists, loading defaults`);
     pathName = defaultName;
+  } else {
+    console.log(`Loading ${pathName + '.js'}`);
   }
   return require(pathName);
 };
@@ -28,9 +30,8 @@ const parseResolution = (input = defaultResolution) => {
   return defaultResolution
 };
 
-const getTargetUrl = (target = 'sandbox') => {
-  console.log("getting target", target);
-  switch (target) {
+const getSiteUrl = (site = 'sandbox') => {
+  switch (site) {
     case "sandbox":
       return 'http://cgw3bstrat3gy:cgw3bstrat3gy@sandbox.onemission.fund';
       break;
@@ -45,7 +46,8 @@ const getTargetUrl = (target = 'sandbox') => {
 
 const config = {
   env : process.env.NODE_ENV || 'development',
-  targetUrl: getTargetUrl(argv.target)
+  siteUrl: getSiteUrl(argv.site),
+  target: argv.target
   // url, credentials, is mobile
 };
 

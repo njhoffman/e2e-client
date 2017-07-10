@@ -20,7 +20,7 @@ client
   .init()
   .then(() => initScreenshotDirectory())
   .setViewportSize(config.resolution)
-  .url('http://cgw3bstrat3gy:cgw3bstrat3gy@sandbox.onemission.fund')
+  .url(config.siteUrl)
   .waitForVisible('a[title="Login"]')
   .then(() => saveScreenshot('Home', moduleName, client))
   .click('a[title="Login"]')
