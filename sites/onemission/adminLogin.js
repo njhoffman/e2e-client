@@ -1,6 +1,6 @@
 const webdriverio = require('webdriverio');
-const config = require('../config');
-const initUtils = require('../utils');
+const config = require('../../config');
+const initUtils = require('../../utils');
 
 // getText, getTitle, getTagName, getAttribute
 const meta = {

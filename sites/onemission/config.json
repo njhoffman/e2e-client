@@ -1,0 +1,28 @@
+{
+  "site" : "onemission",
+  "siteName" : "One Mission",
+  "targetSites" : [
+      {
+        "title": "Sandbox",
+        "url": "http://cgw3bstrat3gy:cgw3bstrat3gy@sandbox.onemission.fund"
+      },
+      {
+        "title": "Dev",
+        "url": "http://cgw3bstrat3gy:cgw3bstrat3gy@dev.onemission.fund"
+      },
+      {
+        "title": "Live",
+        "url": "https://onemission.fund"
+      }
+  ],
+  "tests" : [
+    {
+      "title" : "Fundraiser Registration",
+      "name" : "fundRegister"
+    },
+    {
+      "title" : "Fundraiser Admin Walkthrough",
+      "name" : "fundAdmin"
+    }
+  ]
+}

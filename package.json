@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "node index.js",
-    "test:saucelabs": "node index.js --target saucelabs",
-    "test:local": "node index.js --target local",
-    "test:live": "node index.js --target live",
+    "test:saucelabs": "./node_modules/.bin/nodemon index.js --target saucelabs",
+    "test:onemission:headless": "./node_modules/.bin/nodemon index.js --target local --site onemission",
+    "test:onemission:browser": "./node_modules/.bin/nodemon index.js --target live --site onemission",
+    "test:taponit:headless": "./node_modules/.bin/nodemon index.js --target local --site taponit",
+    "test:taponit:browser": "./node_modules/.bin/nodemon index.js --target live --site taponit",
     "headless": "xvfb-run ./node_modules/selenium-standalone/bin/selenium-standalone start",
     "setup": "./node_modules/selenium-standalone/bin/selenium-standalone install"
   },
@@ -25,5 +27,8 @@
     "webdriverio": "^4.8.0",
     "ws": "^3.0.0",
     "yargs": "^8.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.11"
   }
 }

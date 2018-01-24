@@ -4,24 +4,19 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
   <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="om.css" />
-  <script type="text/javascript" src="om.js"></script>
+  <link rel="stylesheet" type="text/css" href="index.css" />
+  <script type="text/javascript" src="init.js"></script>
 </head>
 <body>
   <div class="row one">
     <div class="col-md-4 center test-command">
-      <h3>One Mission E2E Tests</h3>
+      <h3>Browser E2E Tests</h3>
       <i>Select the test to run...</i><br />
-      <select name="test-name">
-        <option value="fundRegister">Fundraiser Registration</option>
-        <option value="fundAdmin">Fundraiser Admin Walkthrough</option>
+      <select class="test-name" name="test-name">
       </select>
       <button class="btn-primary start">Start</button>
       <label>Target Site:
-        <select name="target-site">
-          <option value="sandbox">Sandbox</option>
-          <option value="dev">Dev</option>
-          <option value="live">Live</option>
+        <select class="target-site" name="target-site">
         </select>
       </label>
       <div class="screenshot-status"></div>

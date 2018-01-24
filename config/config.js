@@ -3,8 +3,8 @@ const fs = require('fs');
 const argv = require('yargs').argv;
 
 const loadConfig = (group, name) => {
-  const defaultName = path.resolve(`${__dirname}/${group}.default`);
-  let pathName = name ? path.resolve(`${__dirname}/${group}.${name}`) : defaultName;
+  const defaultName = path.resolve(`${__dirname}/${group}/default`);
+  let pathName = name ? path.resolve(`${__dirname}/${group}/${name}`) : defaultName;
   if (!fs.existsSync(pathName + '.js')) {
     console.log(`${pathName} does not exists, loading defaults`);
     pathName = defaultName;
@@ -30,23 +30,9 @@ const parseResolution = (input = defaultResolution) => {
   return defaultResolution
 };
 
-const getSiteUrl = (site = 'sandbox') => {
-  switch (site) {
-    case "sandbox":
-      return 'http://cgw3bstrat3gy:cgw3bstrat3gy@sandbox.onemission.fund';
-      break;
-    case "dev":
-      return 'http://cgw3bstrat3gy:cgw3bstrat3gy@dev.onemission.fund';
-      break;
-    case "live":
-      return 'https://onemission.fund';
-      break;
-  }
-};
-
 const config = {
   env : process.env.NODE_ENV || 'development',
-  siteUrl: getSiteUrl(argv.site),
+  site: argv.site,
   target: argv.target
   // url, credentials, is mobile
 };
@@ -55,7 +41,7 @@ config.resolution = parseResolution(argv.resolution);
 config.webdriverio = loadConfig('webdriverio', argv.target);
 
 // http://github.com/SeleniumHQ/selenium/wiki/DesiredCapabilities
-let desiredCapabilities =  loadConfig('browser', argv.browser);
+let desiredCapabilities =  loadConfig('browsers', argv.browser);
 desiredCapabilities.version = argv.version ? argv.version :
   desiredCapabilities.version ? desirecCapabilities.version : '';
 // WINDOWS, XP, VISTA, MAC, LINUX, ANDROID
@@ -76,6 +62,12 @@ if (overrides) {
   console.log('Found environmental overrides, merging', overrides);
   Object.assign(config, overrides(config))
 }
+
+// load site data
+const siteData = require(`../sites/${config.site}/config.json`);
+Object.assign(config, siteData);
+
+
 
 console.log('Config loaded: \n', config);
 
